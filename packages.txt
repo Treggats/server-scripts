@@ -1,0 +1,17 @@
+zsh
+git
+vim
+weechat
+tmux
+nginx
+php-fpm
+mariadb
+rsync
+
+yaourt:
+ - package-query
+  - yajl
+
+openresty
+ - libpqxx
+  - postgresql-libs
