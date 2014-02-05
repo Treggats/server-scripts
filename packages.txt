@@ -7,4 +7,4 @@ nginx
 php-fpm
 mariadb
 rsync
-
+openssh
