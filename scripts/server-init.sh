@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-user=$0
+
+user=$1
 echo "Add user $user"
 useradd -m -G wheel $user
 
