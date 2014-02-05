@@ -8,6 +8,7 @@ pacman -Sy --noprogressbar --noconfirm
 pacman -Su --ignore filesystem,bash --noprogressbar --noconfirm
 pacman -S bash --noprogressbar --noconfirm
 pacman -Su --noprogressbar --noconfirm
+echo "Adding packages"
 for pkg in $(cat ../packages.txt); do pacman -S --noprogressbar --noconfirm $pkg; done
 
 echo "Create ssh dir for user $user"
