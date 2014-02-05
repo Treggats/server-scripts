@@ -4,10 +4,7 @@ echo "Add user $user"
 useradd -m -G wheel $user
 
 echo "Update system"
-pacman -Sy --noprogressbar --noconfirm
-pacman -Su --ignore filesystem,bash --noprogressbar --noconfirm
-pacman -S bash --noprogressbar --noconfirm
-pacman -Su --noprogressbar --noconfirm
+pacman -Syu --noprogressbar --noconfirm
 echo "Adding packages"
 for pkg in $(cat ../packages.txt); do pacman -S --noprogressbar --noconfirm $pkg; done
 
