@@ -12,3 +12,6 @@ echo "Enable and start php-fpm"
 systemctl enable php-fpm
 systemctl start php-fpm
 
+echo "Enable and start sshd"
+systemctl enable sshd
+systemctl start sshd
