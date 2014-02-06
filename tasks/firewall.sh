@@ -32,7 +32,7 @@ iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
 # Accept pings
-iptables -A INPUT -p icmp --imcp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
 
 # Attach TCP/UDP chains to INPUT chain
 iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
