@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-HOME='mtonko.xs4all.nl'
-
 echo "Setting rules"
 
 iptables --flush
