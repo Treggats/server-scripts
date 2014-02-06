@@ -43,17 +43,18 @@ iptables -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable
 iptables -A INPUT -p tcp -j REJECT --reject-with tcp-rst
 iptables -A INPUT -j REJECT --reject-with icmp-proto-unreachable
 
-# SSH
-iptables -A TCP -p tcp -s $HOME --destination-port 22 -j ACCEPT
-
 # Webserver
 iptables -A TCP -p tcp --destination-port 80 -j ACCEPT
 
 # Block the spammers
 iptables -N SSH_CHECK
-iptables -A TCP -p tcp --dport 22 -m state --state NEW -j SSH_CHECK
-iptables -A SSH_CHECK -m recent --set --name SSH
-iptables -A SSH_CHECK -m recent --update --seconds 60 --hitcount 4 --name SSH -j DROP
+iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j SSH_CHECK
+iptables -A SSH_CHECK -m recent --name sshbf --rttl --rcheck --hitcount 3 --seconds 10 -j DROP
+iptables -A SSH_CHECK -m recent --name sshbf --rttl --rcheck --hitcount 4 --seconds 1800 -j DROP
+iptables -A SSH_CHECK -m recent --name sshbf --set -j ACCEPT
+
+# SSH
+iptables -A TCP -p tcp --dport ssh -m conntrack --ctstate NEW -j SSH_CHECK
 
 # LOG the rest
 iptables -A INPUT -j LOG --log-prefix "Firewall dropped: "
