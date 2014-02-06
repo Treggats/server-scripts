@@ -1,8 +1,0 @@
-
-yaourt:
- - package-query
-  - yajl
-
-openresty
- - libpqxx
-  - postgresql-libs
