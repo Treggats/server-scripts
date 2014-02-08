@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ whoami != 'root' ]; then
+    echo "This script must run with super powers :)"
+    exit 1
+fi
+
 while :
 do
     echo "   Main menu"
